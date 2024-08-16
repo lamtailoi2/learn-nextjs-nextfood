@@ -23,7 +23,6 @@ const MainHeaderBackground = () => {
           ></path>
         </svg>
       </div>
-      ;
     </>
   );
 };
