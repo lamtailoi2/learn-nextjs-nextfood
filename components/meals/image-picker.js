@@ -3,14 +3,17 @@ import classes from "./image-picker.module.css";
 import { useRef, useState } from "react";
 import Image from "next/image";
 const ImagePicker = ({ label, name }) => {
-  const [pickedImage, setPickedImage] = useState();
+  const [pickedImage, setPickedImage] = useState(null);
   const inputImg = useRef();
   const handlePickClick = () => {
     inputImg.current.click();
   };
   const handleImgChange = () => {
     const file = inputImg.current.files[0];
-    if (!file) return;
+    if (!file) {
+      setPickedImage(null);
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       setPickedImage(reader.result);
@@ -32,6 +35,7 @@ const ImagePicker = ({ label, name }) => {
           name={name}
           ref={inputImg}
           onChange={handleImgChange}
+          required
         />
         <button className={classes.button} onClick={handlePickClick}>
           Pick an image
