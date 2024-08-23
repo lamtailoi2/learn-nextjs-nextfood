@@ -25,7 +25,9 @@ const ImagePicker = ({ label, name }) => {
       <label htmlFor="image">{label}</label>
       <div className={classes.controls}>
         <div className={classes.preview}>
-          <Image src={pickedImage} alt="The image selected by user" fill />
+          {pickedImage && (
+            <Image src={pickedImage} alt="The image selected by user" fill />
+          )}
         </div>
         <input
           className={classes.input}
